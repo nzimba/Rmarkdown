@@ -1,0 +1,36 @@
+---
+title: "A language and Environment for statistical Computing"
+author: "Mr. Beni Nzimba https://www.nzimbabeni@yahoo.com"
+date: "2024-09-13"
+output: "html_document"
+---
+
+> "Je désapprouve totalement les duels. Si un homme me défie, je le prendrai gentiment 
+et avec indulgence par la main je le conduirai dans un endroit calme et je le tuerai."
+>
+> --- Mark Twain
+
+```{r}
+library(readxl)
+data=read_excel("C:/Users/DELL/Videos/Projet_Austi/Analyse_Mariam/data/data.xlsx")
+summary(data)
+names(data)
+```
+# Transformatin de la série chronologique
+## Transformation des données sur les recettes en séri temporelles
+
+Première étape, nous allons transformer les données de recettes en série temporelles
+
+```{r}
+data.ts = ts(data$Recettes, start=c(2005,1), end=c(2022,12), frequency=12)
+summary(data.ts)
+plot(data.ts, col="red")
+```
+
+### Transformation logarithique
+
+```{r}
+logdata.ts = log(data.ts)
+plot(logdata.ts, col="blue")
+```
+
